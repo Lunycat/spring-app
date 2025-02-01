@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.music.MusicPlayer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.music;
 
 public class ClassicMusic implements Music {
 
