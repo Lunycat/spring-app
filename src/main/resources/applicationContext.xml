@@ -16,12 +16,18 @@
     </bean>
 
     <bean id="jazzMusic"
-        >
+        class="org.example.music.JazzMusic">
     </bean>
 
     <bean id="musicPlayer"
         class="org.example.music.MusicPlayer">
-        <property name="music" ref="classicMusic"/>
+        <constructor-arg name="musics">
+            <list>
+                <ref bean="classicMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="jazzMusic"/>
+            </list>
+        </constructor-arg>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
