@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 *jte-classes/
 /node_modules
+/target
 
 ### IntelliJ IDEA ###
 *.idea/
