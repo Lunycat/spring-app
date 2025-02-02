@@ -1,13 +1,13 @@
-package org.example;
+package org.example.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HelloController {
+public class SecondController {
 
     @GetMapping
-    public String hello() {
-        return "Hello World!";
+    public String exit() {
+        return "second/exit";
     }
 }
