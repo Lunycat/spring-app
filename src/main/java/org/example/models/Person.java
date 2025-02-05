@@ -1,28 +1,18 @@
 package org.example.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
     private int id;
     private String name;
-
-    public Person(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String surname;
+    private String email;
 }

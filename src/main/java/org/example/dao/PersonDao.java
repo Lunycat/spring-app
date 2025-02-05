@@ -14,10 +14,10 @@ public class PersonDao {
 
     {
         people = new ArrayList<>(List.of(
-                new Person(++personCount, "Tom"),
-                new Person(++personCount, "Bob"),
-                new Person(++personCount, "Evgeniy"),
-                new Person(++personCount, "Pavel")
+                new Person(++personCount, "Tom", "Tomi4", "dsada@mail.ru"),
+                new Person(++personCount, "Bob", "Bobi4", "dsada@mail.ru"),
+                new Person(++personCount, "Evgeniy", "Evgenievi4", "dsada@mail.ru"),
+                new Person(++personCount, "Pavel", "Pavlovi4", "dsada@mail.ru")
         ));
     }
 
@@ -30,5 +30,10 @@ public class PersonDao {
                 .filter(p -> p.getId() == id)
                 .findAny()
                 .orElse(null);
+    }
+
+    public void save(Person person) {
+        person.setId(++personCount);
+        people.add(person);
     }
 }
