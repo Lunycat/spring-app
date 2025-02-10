@@ -37,11 +37,11 @@ public class PersonDao {
         people.add(person);
     }
 
-    public void save(Person person, int id) {
+    public void save(int id, Person person) {
         people.set((int)(id - 1), person);
     }
 
-    public void update(Person data, int id) {
+    public void update(int id, Person data) {
         Person person = show(id);
         if (!data.getName().isEmpty()) {
             person.setName(data.getName());
@@ -52,7 +52,7 @@ public class PersonDao {
         if (!data.getEmail().isEmpty()) {
             person.setEmail(data.getEmail());
         }
-        save(person, id);
+        save(id, person);
     }
 
     public String delete(int id) {
