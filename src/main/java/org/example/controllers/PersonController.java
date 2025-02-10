@@ -30,6 +30,7 @@ public class PersonController {
         return "people/show";
     }
 
+    //Create new Person----------------------------
     @GetMapping("/new")
     public String form(Model model) {
         Person person = new Person();
@@ -38,8 +39,29 @@ public class PersonController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute Person person) {
+    public String create(@ModelAttribute("person") Person person) {
         personDao.save(person);
+        return "redirect:/people";
+    }
+    //---------------------------------------------
+
+    //Update new Person----------------------------
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("person", personDao.show(id));
+        return "people/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String patch(@ModelAttribute("person") Person person, @PathVariable("id") int id) {
+        personDao.update(person, id);
+        return "redirect:/people/" + id;
+    }
+    //---------------------------------------------
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        personDao.delete(id);
         return "redirect:/people";
     }
 }

@@ -36,4 +36,27 @@ public class PersonDao {
         person.setId(++personCount);
         people.add(person);
     }
+
+    public void save(Person person, int id) {
+        people.set((int)(id - 1), person);
+    }
+
+    public void update(Person data, int id) {
+        Person person = show(id);
+        if (!data.getName().isEmpty()) {
+            person.setName(data.getName());
+        }
+        if (!data.getSurname().isEmpty()) {
+            person.setSurname(data.getSurname());
+        }
+        if (!data.getEmail().isEmpty()) {
+            person.setEmail(data.getEmail());
+        }
+        save(person, id);
+    }
+
+    public String delete(int id) {
+        people.removeIf(p -> p.getId() == id);
+        return "redirect:/people";
+    }
 }
