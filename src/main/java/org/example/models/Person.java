@@ -2,10 +2,7 @@ package org.example.models;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -13,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Person {
 
-    private int id;
+    private Long id;
     @Size(min = 2, max = 30, message = "Name should be between 2 and 30 chartres")
     private String name;
 
