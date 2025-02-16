@@ -6,6 +6,7 @@ build/
 *jte-classes/
 /node_modules
 /target
+database.properties
 
 ### IntelliJ IDEA ###
 *.idea/
