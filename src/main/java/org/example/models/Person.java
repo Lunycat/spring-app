@@ -2,6 +2,7 @@ package org.example.models;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -27,4 +28,7 @@ public class Person {
 
     @Email(message = "Email should be valid")
     private String email;
+
+    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Address should be in this format: Country, City, Postal Code (6 digits)")
+    private String address;
 }
