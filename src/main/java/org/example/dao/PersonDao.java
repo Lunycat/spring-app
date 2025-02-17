@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDao {
@@ -24,6 +25,11 @@ public class PersonDao {
     public Person show(Long id) {
         return jdbcTemplate.query("SELECT * FROM people WHERE id = ?",
                 new BeanPropertyRowMapper<>(Person.class), id).stream().findAny().orElse(null);
+    }
+
+    public Optional<Person> show(String email) {
+        return jdbcTemplate.query("SELECT * FROM people WHERE email = ?",
+                new BeanPropertyRowMapper<>(Person.class), email).stream().findAny();
     }
 
     public void save(Person person) {

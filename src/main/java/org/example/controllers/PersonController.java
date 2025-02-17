@@ -3,6 +3,7 @@ package org.example.controllers;
 import jakarta.validation.Valid;
 import org.example.dao.PersonDao;
 import org.example.models.Person;
+import org.example.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
 
     private final PersonDao personDao;
+    private final PersonValidator validator;
 
     @Autowired
-    public PersonController(PersonDao personDao) {
+    public PersonController(PersonDao personDao, PersonValidator validator) {
         this.personDao = personDao;
+        this.validator = validator;
     }
 
     @GetMapping
@@ -42,6 +45,7 @@ public class PersonController {
 
     @PostMapping
     public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        validator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/new";
         }
@@ -61,6 +65,7 @@ public class PersonController {
     @PatchMapping("/{id}")
     public String patch(@PathVariable("id") Long id, @ModelAttribute("person") @Valid Person person,
                         BindingResult bindingResult) {
+        validator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }
